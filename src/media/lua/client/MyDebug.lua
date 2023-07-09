@@ -1,9 +1,11 @@
-require("server/Server")
+ --require("Server")
+require("MyDebugServer2")
 
 local isoPlayerPz = require("lib/IsoPlayerPZ")
 local characterPZ = require("lib/CharacterPZ")
+local dbgLeleLib = require("lib/DbgLeleLib")
 
-local function onServerResponse(module, command, args)
+--[[local function onServerResponse(module, command, args)
     print("onServerResponse")
 
     print(args)
@@ -20,7 +22,20 @@ local function onServerResponse(module, command, args)
     -- print(getTotalKills(getPlayer():getUsername(), nil))
     print("-----------------------------------")
 
+end]]
+
+local function onServerResponse(module, command, args)
+    print("onServerResponse")
+    local userName = getPlayer():getUsername()
+    local value = getTotalKillsWrp(userName)
+
+    dbgLeleLib.printLine()
+    print(args[1])
+    print(value)
+    dbgLeleLib.printLine()
+    local dbg
 end
+
 
 local function sendServerRequest()
     print("sendServerRequest")
